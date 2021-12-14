@@ -1,0 +1,96 @@
+﻿@model IEnumerable<WebSiteBanHang.Models.UserProduct>
+
+<div class="row">
+    <div class="card mt-4 ml-2 mr-2">
+
+        <div class="card-header">
+            <h3 class="card-title">User</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table table-head-fixed text-nowrap">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayName("review")
+                        </th>
+                        <th>
+                            @Html.DisplayName("name")
+                        </th>
+                        <th>
+                            @Html.DisplayName("email")
+                        </th>
+                        <th>
+                            @Html.Label("Edit")
+                        </th>
+                        <th>
+                            @Html.Label("Delete")
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.reviewUser)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.nameUser)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.emailUser)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.idUser }, new { @class = "btn btn-info  btn-block btn-sm " })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Delete", "Delete2", new { id = item.idUser }, new { @OnClick = "remove()", @class = "btn btn-danger btn-block btn-sm" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>
+                            @Html.DisplayName("review")
+                        </th>
+                        <th>
+                            @Html.DisplayName("name")
+                        </th>
+                        <th>
+                            @Html.DisplayName("email")
+                        </th>
+                        <th>
+                            @Html.Label("Edit")
+                        </th>
+                        <th>
+                            @Html.Label("Delete")
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    function remove() {
+        var isConfirm = confirm('Are sure wants to delete?');
+        if (isConfirm == true) {
+            return true;
+        }
+        else {
+            event.preventDefault();
+        }
+        return false;
+
+    }
+</script>
